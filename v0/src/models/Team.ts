@@ -1,0 +1,71 @@
+import mongoose, { Schema, model, models, Document } from "mongoose";
+
+interface ITeam extends Document {
+  teamId: string;
+  teamName: string;
+  teamLeader: {
+    email: string;
+    userId: string;
+  };
+  members: {
+    email: string;
+    userId: string;
+    role: string; // ✅ Stores role per team
+  }[];
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+// Define Schema
+const teamSchema = new Schema<ITeam>(
+  {
+    teamId: { type: String, unique: true },
+    teamName: { type: String, required: true },
+    teamLeader: {
+      email: { type: String, required: true },
+      userId: { type: String, required: true },
+    },
+    members: [
+      {
+        email: {
+          type: String,
+          required: [true, "email is required"],
+          match: [
+            /^(?!.*\.\.)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,63}$/,
+            "Invalid email format",
+          ],
+          lowercase: true,
+          trim: true,
+        },
+        userId: { type: String, required: true },
+        role: { type: String, default: "Team Member" },
+      },
+    ],
+  },
+  { timestamps: true }
+);
+
+// ✅ Auto-generate teamId
+teamSchema.pre("save", async function (next) {
+  if (!this.isNew) return next(); // Skip if team already exists
+
+  const lastTeam = await mongoose
+    .model<ITeam>("Team")
+    .findOne({}, { teamId: 1 })
+    .sort({ teamId: -1 });
+
+  let newTeamId = "Team-1"; // Default for the first team
+
+  if (lastTeam && lastTeam.teamId) {
+    const match = lastTeam.teamId.match(/\d+$/); // Extract numeric part
+    const maxNumber = match ? parseInt(match[0], 10) : 0;
+    newTeamId = `Team-${maxNumber + 1}`;
+  }
+
+  this.teamId = newTeamId;
+  next();
+});
+
+const Team = models?.Team || model<ITeam>("Team", teamSchema, "teams");
+
+export default Team;
