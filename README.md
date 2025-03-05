@@ -1,5 +1,5 @@
 # many-to-many-Team-Creation-and-ProjectCreation
-# Version 2
+# Version 1
 
 ## Changes
 
@@ -9,3 +9,14 @@
 ## Work
 
 -In order to make it work you have to delete the Projects,teams,register_users collections from the team_management_db
+# Version 2
+
+## Updation
+
+1. Added Assign Project Page and route.
+2. Also added the button on the Profile page of Project Manager named: Assign Project.
+
+## Work
+
+1.  Simply click on assign Project button this will open a page on which you can assign a Project to a Team.
+    What this is doing is that it is adding assigning a project to a team by filling Assignedto field of the project with the team it is assigning to.
