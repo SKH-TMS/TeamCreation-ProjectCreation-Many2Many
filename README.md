@@ -13,21 +13,13 @@ Moreover, members in teams collection is object-of-array type is used. But it sh
 
 ## Changes
 
-1. Removed the teamLeader as object now teamLeader is a Array type and stores the userID of the TeamLeader as an arry.
-2. Removed the members as array-of-objects now it is an array of string. now it only stores string values i.e User-ID of the members.
+1. teamLeader in "teams" collection is of Array type
+2. members in "teams" collections is of Array type
 
 ## Work
 
 -In order to make it work you have to delete the Projects,teams,register_users collections from the team_management_db
 
-# Version 2
+## issues in this version
 
-## Updation
-
-1. Added Assign Project Page and route.
-2. Also added the button on the Profile page of Project Manager named: Assign Project.
-
-## Work
-
-1.  Simply click on assign Project button this will open a page on which you can assign a Project to a Team.
-    What this is doing is that it is adding assigning a project to a team by filling Assignedto field of the project with the team it is assigning to.
+- "createdBy" in "projects" collection, contains both userEmail and userID. Here, there should be only one foreign key i.e., userID. **This issue can be ignored at this stage, because we will not allowed to create same project by more than one user**.
