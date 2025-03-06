@@ -3,7 +3,7 @@ import mongoose, { Schema, model, models, Document } from "mongoose";
 interface ITeam extends Document {
   teamId: string;
   teamName: string;
-  teamLeader: string; // Change to store only the userId of the team leader
+  teamLeader: string[]; // Change to store only the userId of the team leader
   members: string[]; // Store only userId in members array
   createdAt: Date;
   updatedAt: Date;
@@ -14,7 +14,7 @@ const teamSchema = new Schema<ITeam>(
   {
     teamId: { type: String, unique: true },
     teamName: { type: String, required: true },
-    teamLeader: { type: String, required: true },
+    teamLeader: { type: [String], required: true },
     members: {
       type: [String], // Members will now only contain an array of userIds
       required: true,
