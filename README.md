@@ -1,4 +1,4 @@
-# many-to-many-Team-Creation-and-ProjectCreation
+# Team Creation and Project Creation by Project Manager
 
 # version 0
 
@@ -7,12 +7,14 @@ Foreign key in followings contain both email and userID. But it should be only u
 - projects collection
 - teams collection
 
+Moreover, members in teams collection is object-of-array type is used. But it should be array. This will also imroved in version 1.
+
 # Version 1
 
 ## Changes
 
-1. Removed the teamLeader as object now teamLeader is a String type and stores the userID of the TeamLeader as an arry.
-2. Removed the members as array of objects now it is an array of string. now it only stores string values i.e User-ID of the members.
+1. Removed the teamLeader as object now teamLeader is a Array type and stores the userID of the TeamLeader as an arry.
+2. Removed the members as array-of-objects now it is an array of string. now it only stores string values i.e User-ID of the members.
 
 ## Work
 
