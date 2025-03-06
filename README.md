@@ -1,4 +1,12 @@
 # many-to-many-Team-Creation-and-ProjectCreation
+
+# version 0
+
+Foreign key in followings contain both email and userID. But it should be only userID. This is improved in next version.
+
+- projects collection
+- teams collection
+
 # Version 1
 
 ## Changes
@@ -9,6 +17,7 @@
 ## Work
 
 -In order to make it work you have to delete the Projects,teams,register_users collections from the team_management_db
+
 # Version 2
 
 ## Updation
