@@ -3,7 +3,7 @@
 
 ## Changes
 
-1. Removed the teamLeader as object now teamLeader is a String type and stores the userID of the TeamLeader.
+1. Removed the teamLeader as object now teamLeader is a String type and stores the userID of the TeamLeader as an arry.
 2. Removed the members as array of objects now it is an array of string. now it only stores string values i.e User-ID of the members.
 
 ## Work
